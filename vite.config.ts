@@ -38,7 +38,7 @@ export default defineConfig(async () => ({
     },
     proxy: {
       '/api': {
-        target: 'https://auth.52ai.org/api',
+        target: 'http://cursor.v2.wvw.ink/api',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
