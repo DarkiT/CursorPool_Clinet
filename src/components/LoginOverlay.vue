@@ -64,7 +64,7 @@ const emailProviders = [
 ]
 
 // 隐藏域名列表
-const hiddenValidDomains = ['cloxl.com', '52ai.org']
+const hiddenValidDomains = ['chipeak.com', 'zishuo.net','shabi.in']
 
 // 渲染邮箱选项标签
 const renderLabel = (option: SelectOption) => {
