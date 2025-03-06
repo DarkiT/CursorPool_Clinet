@@ -104,7 +104,7 @@ const emailInputFeedback = computed(() => {
   const input = formData.value.username
   if (!input) return ''
   if (!emailRegex.test(input) && !usernameRegex.test(input)) {
-    return messages[currentLang.value].login.usernameInvalid || '请输入有效的邮箱或用户名(4-20位字母、数字、下划线)'
+    return '请输入有效的邮箱或用户名(4-20位字母、数字、下划线)'
   }
   if (emailRegex.test(input)) {
     const domain = input.split('@')[1]
@@ -271,7 +271,7 @@ const passwordInputFeedback = computed(() => {
 // 修改处理提交的逻辑, 添加密码验证
 async function handleSubmit() {
   if (!formData.value.username || !isValidInput(formData.value.username)) {
-    message.error(messages[currentLang.value].login.usernameError || '请输入有效的邮箱或用户名')
+    message.error('请输入有效的邮箱或用户名')
     return
   }
 
