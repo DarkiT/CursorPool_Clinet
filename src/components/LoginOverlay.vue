@@ -156,17 +156,17 @@ const formTitle = computed(() => messages[currentLang.value].login[isRegisterMod
 const buttonText = computed(() => messages[currentLang.value].login[isRegisterMode.value ? 'registerButton' : 'loginButton'])
 
 // 切换模式
-function toggleMode() {
-  isRegisterMode.value = !isRegisterMode.value
-  // 清空表单
-  formData.value = {
-    username: '',
-    password: '',
-    sms_code: '',
-  }
-  // 注册模式下直接显示验证码框
-  showVerifyCode.value = isRegisterMode.value
-}
+// function toggleMode() {
+//   isRegisterMode.value = !isRegisterMode.value
+//   // 清空表单
+//   formData.value = {
+//     username: '',
+//     password: '',
+//     sms_code: '',
+//   }
+//   // 注册模式下直接显示验证码框
+//   showVerifyCode.value = isRegisterMode.value
+// }
 
 // 修改监听用户名变化的逻辑
 watch(() => formData.value.username, async (newValue) => {
