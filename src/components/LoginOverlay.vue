@@ -33,6 +33,8 @@ const formData = ref({
 
 // 邮箱验证正则
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+// 用户名验证正则 (允许字母、数字、下划线，长度4-20)
+const usernameRegex = /^[a-zA-Z0-9_]{4,20}$/
 
 // 邮箱提供商配置
 const emailProviders = [
@@ -81,32 +83,36 @@ const renderLabel = (option: SelectOption) => {
   ]
 }
 
-// 添加邮箱输入状态
+// 修改邮箱输入状态
 const emailInputStatus = computed(() => {
-  const email = formData.value.username
-  if (!email) return undefined
-  if (!emailRegex.test(email)) return 'error'
-  const domain = email.split('@')[1]
-  if (domain && 
-      !emailProviders.some(p => p.domain === domain) && 
-      !hiddenValidDomains.includes(domain)) {
-    return 'warning'
+  const input = formData.value.username
+  if (!input) return undefined
+  if (!emailRegex.test(input) && !usernameRegex.test(input)) return 'error'
+  if (emailRegex.test(input)) {
+    const domain = input.split('@')[1]
+    if (domain && 
+        !emailProviders.some(p => p.domain === domain) && 
+        !hiddenValidDomains.includes(domain)) {
+      return 'warning'
+    }
   }
   return undefined
 })
 
-// 添加邮箱输入状态和提示信息
+// 修改邮箱输入状态和提示信息
 const emailInputFeedback = computed(() => {
-  const email = formData.value.username
-  if (!email) return ''
-  if (!emailRegex.test(email)) {
-    return messages[currentLang.value].login.emailInvalid
+  const input = formData.value.username
+  if (!input) return ''
+  if (!emailRegex.test(input) && !usernameRegex.test(input)) {
+    return messages[currentLang.value].login.usernameInvalid || '请输入有效的邮箱或用户名(4-20位字母、数字、下划线)'
   }
-  const domain = email.split('@')[1]
-  if (domain && 
-      !emailProviders.some(p => p.domain === domain) && 
-      !hiddenValidDomains.includes(domain)) {
-    return messages[currentLang.value].login.emailUnsupported
+  if (emailRegex.test(input)) {
+    const domain = input.split('@')[1]
+    if (domain && 
+        !emailProviders.some(p => p.domain === domain) && 
+        !hiddenValidDomains.includes(domain)) {
+      return messages[currentLang.value].login.emailUnsupported
+    }
   }
   return ''
 })
@@ -115,6 +121,9 @@ const emailInputFeedback = computed(() => {
 const emailOptions = computed(() => {
   const inputValue = formData.value.username
   const atIndex = inputValue.lastIndexOf('@')
+  
+  // 如果输入的是用户名格式，不显示自动完成
+  if (usernameRegex.test(inputValue)) return []
   
   // 只有当用户输入@后才显示选项
   if (atIndex === -1) return []
@@ -139,8 +148,13 @@ function handleEmailSelect(value: string) {
 function isValidEmail(email: string): boolean {
   if (!emailRegex.test(email)) return false
   const domain = email.split('@')[1]
-  return emailProviders.some(provider => provider.domain === domain) || 
-         hiddenValidDomains.includes(domain)
+  return emailProviders.some(provider => provider.domain === domain) ||
+          hiddenValidDomains.includes(domain)
+}
+
+// 修改验证函数
+function isValidInput(input: string): boolean {
+  return emailRegex.test(input) || usernameRegex.test(input)
 }
 
 // 检查用户是否存在的防抖定时器
@@ -256,8 +270,8 @@ const passwordInputFeedback = computed(() => {
 
 // 修改处理提交的逻辑, 添加密码验证
 async function handleSubmit() {
-  if (!formData.value.username || !isValidEmail(formData.value.username)) {
-    message.error(messages[currentLang.value].login.emailError)
+  if (!formData.value.username || !isValidInput(formData.value.username)) {
+    message.error(messages[currentLang.value].login.usernameError || '请输入有效的邮箱或用户名')
     return
   }
 

@@ -61,7 +61,7 @@ export const messages = {
     },
     login: {
       title: '登录',
-      emailPlaceholder: '请输入邮箱',
+      emailPlaceholder: '请输入账号或邮箱',
       passwordPlaceholder: '请输入密码',
       smsCodePlaceholder: '请输入验证码',
       sendCode: '发送验证码',
