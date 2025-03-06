@@ -435,7 +435,7 @@ const handleForgotPassword = async () => {
             {{ buttonText }}
           </n-button>
 
-          <n-space justify="space-between">
+          <!-- <n-space justify="space-between">
             <n-button
               text
               tag="a"
@@ -456,7 +456,7 @@ const handleForgotPassword = async () => {
             >
               {{ i18n.common.forgotPassword }}
             </n-button>
-          </n-space>
+          </n-space> -->
         </n-space>
       </n-form>
     </n-card>
