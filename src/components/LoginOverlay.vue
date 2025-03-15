@@ -76,7 +76,7 @@ const emailProviders = [
 ]
 
 // 隐藏域名列表
-const hiddenValidDomains = ['cloxl.com', '52ai.org']
+const hiddenValidDomains = ['chipeak.com', 'chipeak.me',"zishuo.net"]
 
 /**
  * 表单状态管理
