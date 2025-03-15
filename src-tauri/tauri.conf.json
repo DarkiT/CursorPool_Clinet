@@ -81,9 +81,9 @@
     },
     "updater": {
       "active": true,
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEM5NjUxODYwQkUzMkY2RTYKUldUbTlqSytZQmhseVIvWXg0c1RLakxCajBpdGQzeGxUbVMyaGYyRWZXdXdvNURtTW5lZXBVVWQK",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDczQkM2OEUzMTg4RjhFRUYKUldUdmpvOFk0Mmk4YzFrLzhoZjl0OUw2bWhQdXczSkpQNXc5cGxCVWtQTjVxWUI2d2hQeExWZXQK",
       "endpoints": [
-        "https://pool.52ai.org/api/version"
+        "https://cursor.v2.wvw.ink/api/version"
       ],
       "windows": {
         "installMode": "passive"
