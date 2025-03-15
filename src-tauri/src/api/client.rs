@@ -171,7 +171,7 @@ impl<'a> RequestBuilder<'a> {
 
 /// 获取 API 基础 URL
 pub fn get_base_url() -> String {
-    "https://pool.52ai.org/api".to_string()
+    "https://cursor.v2.wvw.ink/api".to_string()
 }
 
 /// 清除认证令牌

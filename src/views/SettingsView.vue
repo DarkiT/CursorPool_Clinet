@@ -393,8 +393,6 @@ onMounted(async () => {
         <p>{{ i18n.about.appName }} v{{ version }}</p>
         <p>
           {{ i18n.about.copyright }} © {{ new Date().getFullYear() }} 
-          <n-button text tag="a" href="https://github.com/Sanyela" target="_blank">Sanyela</n-button> & 
-          <n-button text tag="a" href="https://github.com/Cloxl" target="_blank">Cloxl</n-button>
         </p>
         <p>{{ i18n.about.license }}</p>
       </n-space>
