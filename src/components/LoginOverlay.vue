@@ -240,7 +240,7 @@ const forgotPasswordEmailStatus = computed(() =>
 const validators = {
   // 密码验证
   validatePassword(value: string): boolean {
-    return /^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{6,20}$/.test(value)
+    return /^(?=.*[A-Za-z])(?=.*\d).{6,}$/.test(value)
   },
   
   // 邮箱验证
